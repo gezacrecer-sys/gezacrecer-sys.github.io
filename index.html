@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Geza - Crecer y Servir</title>
+    
+    <!-- Fonts: Nunito & Dancing Script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons & Animations -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', 
+                        secondary: '#ecd20d', // Amarillo corporativo
+                        accent: '#cf3135',
+                        dark: '#111827',
+                        navy: '#1a3673',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                        cursive: ['Dancing Script', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { font-family: 'Nunito', sans-serif; }
+        .cursive { font-family: 'Dancing Script', cursive !important; }
+
+        .header-border {
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .nav-item-dropdown {
+            position: relative;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-top: 4px solid #1e3a8a;
+            border-radius: 0 0 8px 8px;
+            z-index: 100;
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 20px;
+            font-weight: 800;
+            color: #111827;
+            transition: all 0.2s;
+        }
+
+        .dropdown-link:hover {
+            background-color: #f0f7ff;
+            color: #1e3a8a;
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-50 header-border">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="Logo Fundación 1.png" alt="Logo Fundación Geza" class="h-14 md:h-16">
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-10 font-extrabold text-[15px] tracking-tight text-gray-900">
+                <!-- INICIO en AZUL (Primary) -->
+                <a href="index.html" class="text-primary hover:text-blue-700 transition-colors uppercase border-b-2 border-primary pb-1">Inicio</a>
+                
+                <div class="nav-item-dropdown py-6">
+                    <button class="flex items-center gap-1 hover:text-primary uppercase group">
+                        Quienes Somos 
+                        <i class="ph ph-caret-down text-[12px] transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="Quinessomos.html" class="dropdown-link border-b border-gray-50">Quienes somos</a>
+                        <a href="servicios.html" class="dropdown-link">Servicios</a>
+                    </div>
+                </div>
+
+                <a href="donar.html" class="hover:text-primary transition-colors uppercase">Donar</a>
+                <a href="#" class="hover:text-primary transition-colors uppercase">Contacto</a>
+            </nav>
+
+            <button class="md:hidden text-3xl text-primary">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Slider Section -->
+    <section class="slider-container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <div class="slide-bg" style="background-image: url('imagen4.jpeg');"></div>
+            <div class="slide-overlay"></div>
+            <div class="max-w-[1200px] mx-auto px-6 w-full text-white relative z-20">
+                <div class="max-w-2xl">
+                    <p class="cursive text-3xl md:text-4xl text-secondary mb-4">Transformando vidas en Cúcuta</p>
+                    <h1 class="text-5xl md:text-7xl font-black uppercase leading-none mb-6">Unidos por <br><span class="text-secondary">el Bienestar</span></h1>
+                    <p class="text-lg md:text-xl font-medium mb-10 opacity-90 leading-relaxed text-balance">Trabajamos incansablemente por el desarrollo social, la protección ambiental y el futuro de nuestra niñez.</p>
+                    <a href="Quinessomos.html" class="bg-secondary text-primary px-8 py-4 rounded-xl font-black uppercase text-sm tracking-widest shadow-lg hover:bg-white transition-colors inline-block">Conócenos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <div class="slide-bg" style="background-image: url('imagen3.jpeg');"></div>
+            <div class="slide-overlay"></div>
+            <div class="max-w-[1200px] mx-auto px-6 w-full text-white relative z-20 text-center lg:text-left">
+                <div class="max-w-2xl">
+                    <p class="cursive text-3xl md:text-4xl text-secondary mb-4">Compromiso con la Tierra</p>
+                    <h1 class="text-5xl md:text-7xl font-black uppercase leading-none mb-6">Futuro <br><span class="text-secondary">Sostenible</span></h1>
+                    <p class="text-lg md:text-xl font-medium mb-10 opacity-90 leading-relaxed text-balance">Protegemos el medio ambiente a través de la educación y el uso de energías limpias en nuestra comunidad.</p>
+                    <a href="servicios.html" class="bg-secondary text-primary px-8 py-4 rounded-xl font-black uppercase text-sm tracking-widest shadow-lg hover:bg-white transition-colors inline-block">Ver Servicios</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <div class="slide-bg" style="background-image: url('imagen5.jpeg');"></div>
+            <div class="slide-overlay"></div>
+            <div class="max-w-[1200px] mx-auto px-6 w-full text-white relative z-20">
+                <div class="max-w-2xl">
+                    <p class="cursive text-3xl md:text-4xl text-secondary mb-4">Inclusión y Apoyo</p>
+                    <h1 class="text-5xl md:text-7xl font-black uppercase leading-none mb-6">Creciendo <br><span class="text-secondary">en Comunidad</span></h1>
+                    <p class="text-lg md:text-xl font-medium mb-10 opacity-90 leading-relaxed text-balance">Fortalecemos el tejido social mediante programas enfocados en la mujer, el adulto mayor y la juventud.</p>
+                    <a href="Donar.html" class="bg-secondary text-primary px-8 py-4 rounded-xl font-black uppercase text-sm tracking-widest shadow-lg hover:bg-white transition-colors inline-block">Haz tu aporte</a>
+                </div>
+            </div>
+        </div>
+
+        <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md text-white transition-all flex items-center justify-center">
+            <i class="ph ph-caret-left text-2xl"></i>
+        </button>
+        <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md text-white transition-all flex items-center justify-center">
+            <i class="ph ph-caret-right text-2xl"></i>
+        </button>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
+            <div class="dot w-3 h-3 rounded-full bg-white/50 cursor-pointer transition-all active bg-white"></div>
+            <div class="dot w-3 h-3 rounded-full bg-white/50 cursor-pointer transition-all"></div>
+            <div class="dot w-3 h-3 rounded-full bg-white/50 cursor-pointer transition-all"></div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="relative" data-aos="fade-right">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+                    <img src="imagen2.jpeg" 
+                         alt="Labor social en Cúcuta" 
+                         class="rounded-[50px] shadow-2xl relative z-10 w-full object-cover h-[500px]">
+                </div>
+
+                <div data-aos="fade-left">
+                    <h2 class="text-4xl md:text-5xl font-black text-primary uppercase leading-tight tracking-tighter mb-8">
+                        Fundación <br><span class="text-secondary underline decoration-primary underline-offset-8">Crecer y Servir</span> Geza
+                    </h2>
+                    <p class="text-gray-600 font-bold text-lg mb-8 text-justify leading-relaxed">
+                        Nacemos de la voluntad de líderes sociales cucuteños que entendieron que el cambio real viene del trabajo en el territorio. Nos enfocamos en mejorar la calidad de vida de nuestra gente y proteger el medio ambiente a través de programas de inclusión y seguridad alimentaria.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 font-black uppercase text-[12px] tracking-wider text-primary">
+                        <div class="flex items-center gap-4 bg-gray-50 p-5 rounded-2xl border-l-4 border-secondary">
+                            <i class="ph ph-heart-straight text-3xl text-secondary"></i> Compromiso Social
+                        </div>
+                        <div class="flex items-center gap-4 bg-gray-50 p-5 rounded-2xl border-l-4 border-secondary">
+                            <i class="ph ph-tree-evergreen text-3xl text-secondary"></i> Cuidado Ambiental
+                        </div>
+                        <div class="flex items-center gap-4 bg-gray-50 p-5 rounded-2xl border-l-4 border-secondary">
+                            <i class="ph ph-users-four text-3xl text-secondary"></i> Inclusión Real
+                        </div>
+                        <div class="flex items-center gap-4 bg-gray-50 p-5 rounded-2xl border-l-4 border-secondary">
+                            <i class="ph ph-bowl-food text-3xl text-secondary"></i> Seguridad Alimentaria
+                        </div>
+                    </div>
+
+                    <a href="Quinessomos.html" class="inline-flex items-center gap-3 text-primary font-black uppercase tracking-widest hover:gap-5 transition-all">
+                        LEER MÁS SOBRE NOSOTROS <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-20 pb-10">
+        <div class="max-w-[1300px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
+            <div class="flex flex-col items-start">
+                <div class="bg-white p-2 rounded-2xl w-40 h-28 flex items-center justify-center mb-6 overflow-hidden">
+                    <img src="Logo Fundación 1.png" alt="Logo Geza" class="max-h-full object-contain">
+                </div>
+                <p class="text-gray-300 text-sm font-bold leading-tight max-w-[200px]">
+                    Llevando bienestar e inclusión a cada rincón de nuestra región.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-secondary font-black text-lg uppercase mb-8 tracking-[0.2em]">Navegación</h4>
+                <ul class="space-y-4 font-black text-sm uppercase tracking-widest">
+                    <li><a href="index.html" class="text-secondary hover:text-white transition-colors inline-block">Inicio</a></li>
+                    <li><a href="servicios.html" class="hover:text-secondary transition-colors inline-block">Servicios</a></li>
+                    <li><a href="donar.html" class="hover:text-secondary transition-colors inline-block">Donar</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-secondary font-black text-lg uppercase mb-8 tracking-[0.2em]">Contacto</h4>
+                <div class="space-y-6 font-black text-sm tracking-wider">
+                    <p class="flex items-center gap-3">
+                        <i class="ph ph-phone-fill text-primary text-xl"></i> 
+                        <span>+57 (320) 4694618</span>
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <i class="ph ph-envelope-simple-fill text-primary text-xl"></i> 
+                        <span class="lowercase">gezacrecer@gmail.com</span>
+                    </p>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-secondary font-black text-lg uppercase mb-8 tracking-[0.2em]">Redes</h4>
+                <div class="flex gap-6 text-2xl">
+                    <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 pt-8 border-t border-gray-900 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-600">
+                &copy; 2024 FUNDACIÓN CRECER Y SERVIR GEZA.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('bg-white'));
+            dots.forEach(dot => dot.classList.add('bg-white/50'));
+
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('bg-white');
+            dots[currentSlide].classList.remove('bg-white/50');
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function startAutoSlide() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide--;
+            showSlide(currentSlide);
+            startAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide++;
+            showSlide(currentSlide);
+            startAutoSlide();
+        });
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                currentSlide = idx;
+                showSlide(currentSlide);
+                startAutoSlide();
+            });
+        });
+
+        startAutoSlide();
+    </script>
+
+</body>
+</html>

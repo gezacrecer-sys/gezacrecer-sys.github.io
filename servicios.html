@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Fundación Geza</title>
+    
+    <!-- Google Fonts: Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Library para animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', 
+                        secondary: '#ecd20d',
+                        darkBlue: '#1a3673',
+                        textGray: '#4b5563',
+                        facebook: '#1877F2',
+                        instagram: '#E4405F',
+                        tiktok: '#000000',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { font-family: 'Nunito', sans-serif !important; }
+
+        .banner-curvo-azul {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+            position: relative;
+            padding: 80px 0;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        /* --- MENÚ DESPLEGABLE --- */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 8px 8px;
+            z-index: 100;
+            border-top: 4px solid #1e3a8a;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            display: block;
+            color: #1e3a8a;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f5f9;
+        }
+
+        .dropdown-item-active {
+            background-color: #eff6ff;
+            color: #1e3a8a;
+        }
+
+        .logo-img {
+            height: 85px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* --- TARJETAS DE SERVICIOS --- */
+        .service-card {
+            background: #fdfdfd;
+            border-radius: 1.5rem;
+            padding: 2.5rem 1.25rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.03);
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            background: white;
+            border-color: rgba(30, 58, 138, 0.1);
+        }
+
+        /* Redes flotantes */
+        .social-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            border-radius: 0 8px 8px 0;
+        }
+        .social-btn:hover {
+            width: 60px;
+        }
+    </style>
+</head>
+<body class="bg-white text-textMain overflow-x-hidden">
+
+    <!-- Redes Flotantes -->
+    <div class="social-sidebar">
+        <a href="#" class="social-btn bg-facebook"><i class="ph-fill ph-facebook-logo text-2xl"></i></a>
+        <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="social-btn bg-instagram"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
+        <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="social-btn bg-tiktok"><i class="ph-fill ph-tiktok-logo text-2xl"></i></a>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-[1350px] mx-auto px-6 flex justify-between items-center h-[90px]">
+            <a href="index.html">
+                <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/f_auto,q_auto/Logo_Fundación_1_yi7vhx" alt="Logo" class="logo-img">
+            </a>
+            
+            <nav class="hidden md:flex space-x-10 items-center h-full">
+                <a href="index.html" class="text-gray-900 font-black uppercase text-sm tracking-widest hover:text-primary transition-colors">Inicio</a>
+                
+                <div class="dropdown relative h-full flex items-center group">
+                    <a href="Quienessomos.html" class="text-primary font-black uppercase text-sm tracking-widest flex items-center gap-1 h-full">
+                        Quienes Somos <i class="ph ph-caret-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="Quinessomos.html" class="dropdown-item">Quienes somos</a>
+                        <a href="servicios.html" class="dropdown-item dropdown-item-active">Servicios</a>
+                    </div>
+                </div>
+
+                <a href="Donar.html" class="text-gray-900 font-black uppercase text-sm tracking-widest hover:text-primary transition-colors">Donar</a>
+                <a href="#" class="text-gray-900 font-black uppercase text-sm tracking-widest hover:text-primary transition-colors">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="banner-curvo-azul">
+        <div class="max-w-5xl mx-auto px-4 text-center" data-aos="fade-down" data-aos-duration="1000">
+            <h1 class="text-5xl md:text-7xl font-black mb-4 uppercase text-white tracking-tighter">Nuestros Servicios</h1>
+            <div class="flex items-center justify-center space-x-2 text-sm font-black uppercase text-white/90 tracking-widest">
+                <a href="index.html" class="hover:text-secondary transition-colors">Inicio</a> 
+                <span class="text-secondary">/</span> 
+                <span>Servicios</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Grid -->
+    <main class="py-24 bg-white">
+        <div class="max-w-[1300px] mx-auto px-6 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black text-primary uppercase tracking-tighter mb-4">Lo que ofrecemos</h2>
+                <div class="w-24 h-1.5 bg-secondary mx-auto mb-16"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Seguridad Alimentaria -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-6"><i class="ph ph-leaf text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Seguridad Alimentaria</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">Nutrir el presente es asegurar el futuro. Trabajamos para que cada mesa tenga alimento suficiente, sano y soberano.</p>
+                </div>
+                
+                <!-- Formación y Emprendimiento -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-6"><i class="ph ph-lightbulb-filament text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Formación y Emprendimiento</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">El conocimiento es la herramienta. Impulsamos el talento local para convertir ideas en proyectos de vida sostenibles.</p>
+                </div>
+
+                <!-- Mujer y Adulto Mayor -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mb-6"><i class="ph ph-users-three text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Mujer y Adulto Mayor</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">Honramos la sabiduría de nuestros mayores y potenciamos el liderazgo femenino para tejer redes de apoyo.</p>
+                </div>
+
+                <!-- Juventud, Deporte y Cultura -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="mb-6"><i class="ph ph-soccer-ball text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Juventud, Deporte y Cultura</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">Mente sana y cuerpo activo. Apostamos por el arte y el deporte para que nuestros jóvenes conquisten sus sueños.</p>
+                </div>
+
+                <!-- Trabajo Comunitario -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-6"><i class="ph ph-hand-fist text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Trabajo Comunitario</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">La verdadera transformación nace de la unión y el esfuerzo compartido. Juntos somos arquitectos del cambio.</p>
+                </div>
+
+                <!-- Medio Ambiente -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-6"><i class="ph ph-sun text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Medio Ambiente y Energías Limpias</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">Cuidar la tierra es cuidar la vida. Con paneles solares y reforestación, devolvemos al planeta lo que nos regala.</p>
+                </div>
+
+                <!-- Vivienda -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mb-6"><i class="ph ph-house-line text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Vivienda y Entorno Digno</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">Un hogar es el refugio de la dignidad. Transformamos espacios para que cada familia viva en un entorno seguro.</p>
+                </div>
+
+                <!-- Proyectos Sociales -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="mb-6"><i class="ph ph-hand-heart text-6xl text-primary"></i></div>
+                    <h3 class="text-lg font-black text-primary mb-3 uppercase leading-tight">Proyectos y Servicios Sociales</h3>
+                    <p class="text-[13px] font-bold text-gray-500 leading-relaxed">Nuestra prioridad es la gente. Diseñamos soluciones que ponen el bienestar humano en el centro del progreso.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-20">
+        <div class="max-w-[1250px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 items-start border-b border-white/10 pb-16 mb-10">
+            
+            <!-- Logo Col -->
+            <div class="flex flex-col items-center md:items-start" data-aos="fade-right">
+                <div class="bg-white p-2 rounded-2xl mb-6 shadow-xl">
+                    <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/v1740176880/Logo_Fundaci%C3%B3n_1_yi7vhx.png" alt="Logo Geza" class="h-24">
+                </div>
+                <p class="text-xs font-bold text-gray-400 max-w-[200px] text-center md:text-left">
+                    Llevando bienestar e inclusión a cada rincón de nuestra región.
+                </p>
+            </div>
+
+            <!-- Navegación -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">NAVEGACIÓN</h4>
+                <ul class="space-y-4 font-black text-sm uppercase tracking-widest">
+                    <li><a href="index.html" class="hover:text-secondary">INICIO</a></li>
+                    <li><a href="servicios.html" class="hover:text-secondary text-secondary">SERVICIOS</a></li>
+                    <li><a href="Donar.html" class="hover:text-secondary">DONAR</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">CONTACTO</h4>
+                <div class="space-y-6 font-bold text-sm">
+                    <p class="flex items-center gap-4">
+                        <i class="ph-fill ph-phone text-primary text-xl"></i> +57 320 4694618
+                    </p>
+                    <p class="flex items-center gap-4">
+                        <i class="ph-fill ph-envelope-simple text-primary text-xl"></i> gezacrecer@gmail.com
+                    </p>
+                </div>
+            </div>
+
+            <!-- Redes -->
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">REDES</h4>
+                <div class="flex gap-6 text-2xl">
+                    <a href="#" class="hover:text-primary"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="hover:text-primary"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="hover:text-primary"><i class="ph ph-tiktok-logo"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-600">
+                &copy; 2024 FUNDACIÓN CRECER Y SERVIR GEZA.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Inicialización de AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+    </script>
+
+</body>
+</html>

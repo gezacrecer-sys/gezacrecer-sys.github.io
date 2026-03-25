@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quienes somos - Fundación Geza</title>
+    
+    <!-- Google Fonts: Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Library para animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', 
+                        secondary: '#ecd20d',
+                        darkBlue: '#1a3673',
+                        facebook: '#1877F2',
+                        instagram: '#E4405F',
+                        tiktok: '#000000',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { font-family: 'Nunito', sans-serif !important; }
+
+        .banner-curvo-azul {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+            position: relative;
+            padding: 80px 0;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        /* --- MENÚ DESPLEGABLE --- */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 12px 12px;
+            z-index: 100;
+            border-top: 4px solid #1e3a8a;
+            overflow: hidden;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 14px 24px;
+            display: block;
+            color: #1e3a8a;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8fafc;
+            color: #3b82f6;
+        }
+
+        .logo-img {
+            height: 75px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Cards Estilo Imagen */
+        .card-shadow {
+            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card-shadow:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Redes flotantes */
+        .social-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            border-radius: 0 8px 8px 0;
+        }
+        .social-btn:hover { width: 60px; }
+    </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+    <!-- Redes Flotantes -->
+    <div class="social-sidebar">
+        <a href="#" class="social-btn bg-facebook"><i class="ph-fill ph-facebook-logo text-2xl"></i></a>
+        <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="social-btn bg-instagram"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
+        <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="social-btn bg-tiktok"><i class="ph-fill ph-tiktok-logo text-2xl"></i></a>
+    </div>
+
+    <!-- Header Ajustado (Mismo estilo que Servicios/Donar) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-[1350px] mx-auto px-6 flex justify-between items-center h-[100px]">
+            <a href="index.html" class="flex items-center">
+                <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/f_auto,q_auto/Logo_Fundación_1_yi7vhx" alt="Logo" class="logo-img">
+            </a>
+            
+            <nav class="hidden md:flex space-x-8 lg:space-x-12 items-center h-full font-black text-sm uppercase tracking-widest">
+                <a href="index.html" class="text-gray-900 hover:text-primary transition-colors">Inicio</a>
+                
+                <div class="dropdown relative h-full flex items-center group">
+                    <a href="index.html" class="text-primary flex items-center gap-2 h-full border-b-4 border-primary pt-1">
+                        Quienes Somos <i class="ph ph-caret-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="Quinessomos.html" class="dropdown-item">Quienes somos</a>
+                        <a href="servicios.html" class="dropdown-item">Servicios</a>
+                    </div>
+                </div>
+
+                <a href="donar.html" class="text-gray-900 hover:text-primary transition-colors">Donar</a>
+                <a href="#" class="text-gray-900 hover:text-primary transition-colors">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="banner-curvo-azul">
+        <div class="max-w-5xl mx-auto px-4 text-center" data-aos="fade-down">
+            <h1 class="text-5xl md:text-7xl font-black mb-4 uppercase text-white tracking-tighter drop-shadow-md">Quiénes somos</h1>
+            <div class="flex items-center justify-center space-x-2 text-sm font-black uppercase text-white/90 tracking-widest">
+                <a href="index.html" class="hover:text-secondary transition-colors">Inicio</a> 
+                <span class="text-secondary">/</span> 
+                <span>Sobre la Fundación</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Historia -->
+    <section class="py-20 bg-white">
+        <div class="max-w-[1250px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7" data-aos="fade-down" data-aos-delay="100">
+                    <h2 class="text-4xl font-black text-primary mb-8 uppercase leading-tight tracking-tighter">
+                        ¿POR QUÉ NACE NUESTRA <br> FUNDACIÓN?
+                    </h2>
+                    <div class="space-y-6 text-gray-600 font-bold text-lg leading-relaxed text-justify pr-4">
+                        <p>La <span class="text-primary">Fundación Crecer y Servir GEZA</span> nace en Cúcuta, basada en la experiencia como líderes sociales y comunales, al conocer de cerca las realidades, necesidades y desafíos que enfrentan nuestras comunidades.</p>
+                        <p>A partir del trabajo en los barrios, se identificó no solo la falta de oportunidades para muchas familias, sino también la necesidad de fortalecer el cuidado del medio ambiente, entendiendo que el bienestar de la comunidad también depende de entornos sanos y sostenibles.</p>
+                        <p>Por ello, surge esta iniciativa con el propósito de servir de manera integral, promoviendo el desarrollo social, el apoyo a poblaciones vulnerables y la conciencia ambiental, fomentando el respeto por la naturaleza y el cuidado de nuestros espacios.</p>
+                        
+                        <div class="bg-blue-50 border-l-4 border-primary p-6 mt-8 rounded-r-xl">
+                            <p class="text-primary italic">Creemos firmemente que la experiencia en el territorio, el compromiso social y la responsabilidad ambiental son la base para transformar vidas y construir un mejor futuro para todos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5" data-aos="fade-down" data-aos-delay="300">
+                    <div class="relative p-4 bg-secondary/10 rounded-[40px] rotate-2">
+                        <img src="image1.jpeg" 
+                             alt="Comunidad Geza" 
+                             class="rounded-[30px] shadow-2xl -rotate-2 object-cover h-[500px] w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-[1250px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Misión -->
+            <div class="bg-white p-10 rounded-2xl card-shadow border-l-[12px] border-primary" data-aos="fade-down" data-aos-delay="100">
+                <h3 class="text-3xl font-black text-primary mb-6 uppercase tracking-tight">Nuestra Misión</h3>
+                <p class="text-gray-600 font-bold leading-relaxed text-justify text-lg">
+                    Contribuir al bienestar integral de las familias y comunidades en condición de vulnerabilidad mediante la ejecución de programas y proyectos sociales orientados a la seguridad alimentaria, la formación y el emprendimiento, la inclusión social, la educación, la cultura, el deporte, la salud preventiva, la protección del medio ambiente y el fortalecimiento comunitario, promoviendo el desarrollo humano sostenible.
+                </p>
+            </div>
+            <!-- Visión -->
+            <div class="bg-white p-10 rounded-2xl card-shadow border-l-[12px] border-secondary" data-aos="fade-down" data-aos-delay="300">
+                <h3 class="text-3xl font-black text-primary mb-6 uppercase tracking-tight">Nuestra Visión</h3>
+                <p class="text-gray-600 font-bold leading-relaxed text-justify text-lg">
+                    Ser una fundación reconocida a nivel local, regional y nacional por su impacto social, su compromiso con el desarrollo humano sostenible y su capacidad de gestión de programas y proyectos que transformen positivamente la vida de las comunidades, promoviendo la equidad, la inclusión, la participación comunitaria y el cuidado del entorno.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principios -->
+    <section class="py-24 bg-white">
+        <div class="max-w-[1250px] mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-primary uppercase tracking-tighter inline-block border-b-4 border-secondary pb-2" data-aos="fade-down">Principios</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Compromiso -->
+                <div class="bg-white p-10 rounded-3xl card-shadow text-center flex flex-col items-center" data-aos="fade-down" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-handshake text-primary text-4xl"></i>
+                    </div>
+                    <h4 class="text-xl font-black text-primary mb-4 uppercase">Compromiso</h4>
+                    <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                        Nos dedicamos plenamente al desarrollo humano sostenible y a la gestión de programas que transforman positivamente la vida de las comunidades.
+                    </p>
+                </div>
+
+                <!-- Ética y Transparencia -->
+                <div class="bg-white p-10 rounded-3xl card-shadow text-center flex flex-col items-center" data-aos="fade-down" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-shield-check text-primary text-4xl"></i>
+                    </div>
+                    <h4 class="text-xl font-black text-primary mb-4 uppercase leading-tight">Ética y <br> Transparencia</h4>
+                    <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                        Actuamos con una gestión transparente y un enfoque humano, garantizando seriedad y organización en cada uno de nuestros procesos.
+                    </p>
+                </div>
+
+                <!-- Empoderamiento -->
+                <div class="bg-white p-10 rounded-3xl card-shadow text-center flex flex-col items-center" data-aos="fade-down" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-graduation-cap text-primary text-4xl"></i>
+                    </div>
+                    <h4 class="text-xl font-black text-primary mb-4 uppercase">Empoderamiento</h4>
+                    <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                        Proporcionamos educación y formación como herramientas clave para que las comunidades sean protagonistas de su propio progreso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="py-24 bg-blue-50/50">
+        <div class="max-w-[1100px] mx-auto px-6 bg-white/40 p-12 rounded-[40px] border border-blue-100 shadow-inner">
+            <h2 class="text-4xl font-black text-primary uppercase tracking-tighter text-center mb-16" data-aos="fade-down">Valores</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Inclusión -->
+                <div class="bg-white p-8 rounded-2xl card-shadow flex items-start gap-6 border-l-4 border-secondary" data-aos="fade-down" data-aos-delay="100">
+                    <div class="bg-secondary p-3 rounded-xl flex-shrink-0">
+                        <i class="ph-fill ph-users-three text-primary text-3xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-black text-primary mb-2 uppercase">Inclusión</h4>
+                        <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                            Promovemos la participación activa de niños, jóvenes, mujeres, adultos mayores y personas con discapacidad.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Equidad e Igualdad -->
+                <div class="bg-white p-8 rounded-2xl card-shadow flex items-start gap-6 border-l-4 border-secondary" data-aos="fade-down" data-aos-delay="200">
+                    <div class="bg-secondary p-3 rounded-xl flex-shrink-0">
+                        <i class="ph-fill ph-scales text-primary text-3xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-black text-primary mb-2 uppercase">Equidad e Igualdad</h4>
+                        <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                            Trabajamos para que el desarrollo integral sea un derecho alcanzado por todos, eliminando barreras sociales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-20 pb-10">
+        <div class="max-w-[1300px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-16 mb-10">
+            
+            <!-- Logo & Slogan -->
+            <div class="flex flex-col items-center md:items-start" data-aos="fade-down">
+                <div class="bg-white p-2 rounded-2xl mb-6 shadow-xl w-32 h-32 flex items-center justify-center">
+                    <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/v1740176880/Logo_Fundaci%C3%B3n_1_yi7vhx.png" alt="Logo Geza" class="w-full h-auto">
+                </div>
+                <p class="text-xs font-bold text-gray-400 max-w-[220px] text-center md:text-left leading-relaxed">
+                    Llevando bienestar e inclusión a cada rincón de nuestra región.
+                </p>
+            </div>
+
+            <!-- Navegación -->
+            <div data-aos="fade-down" data-aos-delay="100">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">NAVEGACIÓN</h4>
+                <ul class="space-y-4 font-black text-sm uppercase tracking-[0.1em]">
+                    <li><a href="index.html" class="hover:text-secondary transition-colors">INICIO</a></li>
+                    <li><a href="servicios.html" class="hover:text-secondary transition-colors">SERVICIOS</a></li>
+                    <li><a href="donar.html" class="hover:text-secondary transition-colors">DONAR</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div data-aos="fade-down" data-aos-delay="200">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">CONTACTO</h4>
+                <div class="space-y-6 font-bold text-sm">
+                    <p class="flex items-center gap-4 text-gray-300">
+                        <i class="ph ph-phone text-primary text-xl"></i> +57 320 4694618
+                    </p>
+                    <p class="flex items-center gap-4 text-gray-300">
+                        <i class="ph ph-envelope-simple text-primary text-xl"></i> gezacrecer@gmail.com
+                    </p>
+                </div>
+            </div>
+
+            <!-- Redes -->
+            <div data-aos="fade-down" data-aos-delay="300">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10 text-center md:text-left">REDES</h4>
+                <div class="flex justify-center md:justify-start gap-6 text-2xl">
+                    <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
+                        <i class="ph ph-facebook-logo"></i>
+                    </a>
+                    <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-instagram hover:border-instagram transition-all">
+                        <i class="ph ph-instagram-logo"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                        <i class="ph ph-tiktok-logo"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center px-6">
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-600">
+                &copy; 2024 FUNDACIÓN CRECER Y SERVIR GEZA. TODOS LOS DERECHOS RESERVADOS.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Inicialización de AOS -->
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-quad'
+        });
+    </script>
+
+</body>
+</html>

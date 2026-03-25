@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donaciones - Fundación Geza</title>
+    
+    <!-- Google Fonts: Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Library para animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', 
+                        secondary: '#ecd20d',
+                        darkBlue: '#1a3673',
+                        facebook: '#1877F2',
+                        instagram: '#E4405F',
+                        tiktok: '#000000',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { font-family: 'Nunito', sans-serif !important; }
+
+        .banner-curvo-azul {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+            position: relative;
+            padding: 80px 0;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        /* --- MENÚ DESPLEGABLE --- */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 8px 8px;
+            z-index: 100;
+            border-top: 4px solid #1e3a8a;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            display: block;
+            color: #1e3a8a;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f5f9;
+        }
+
+        .logo-img {
+            height: 85px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* --- TARJETAS DE DONACIÓN --- */
+        .donation-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(30, 58, 138, 0.05);
+            height: 100%;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border-color: rgba(30, 58, 138, 0.3);
+        }
+
+        .icon-box {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            background: rgba(30, 58, 138, 0.05);
+            border-radius: 50%;
+        }
+
+        /* Redes flotantes */
+        .social-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            border-radius: 0 8px 8px 0;
+        }
+        .social-btn:hover { width: 60px; }
+    </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+    <!-- Redes Flotantes -->
+    <div class="social-sidebar">
+        <a href="#" class="social-btn bg-facebook"><i class="ph-fill ph-facebook-logo text-2xl"></i></a>
+        <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="social-btn bg-instagram"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
+        <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="social-btn bg-tiktok"><i class="ph-fill ph-tiktok-logo text-2xl"></i></a>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-[1350px] mx-auto px-6 flex justify-between items-center h-[90px]">
+            <a href="index.html">
+                <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/f_auto,q_auto/Logo_Fundación_1_yi7vhx" alt="Logo" class="logo-img">
+            </a>
+            
+            <nav class="hidden md:flex space-x-10 items-center h-full">
+                <a href="index.html" class="text-gray-900 font-black uppercase text-sm tracking-widest hover:text-primary transition-colors">Inicio</a>
+                
+                <div class="dropdown relative h-full flex items-center group">
+                    <a href="Quienessomos.html" class="text-gray-900 font-black uppercase text-sm tracking-widest flex items-center gap-1 h-full hover:text-primary transition-colors">
+                        Quienes Somos <i class="ph ph-caret-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="Quinessomos.html" class="dropdown-item">Quienes somos</a>
+                        <a href="servicios.html" class="dropdown-item">Servicios</a>
+                    </div>
+                </div>
+
+                <!-- Cambio de color de borde de secondary (amarillo) a primary (azul) -->
+                <a href="donar.html" class="text-primary font-black uppercase text-sm tracking-widest border-b-2 border-primary">Donar</a>
+                <a href="#" class="text-gray-900 font-black uppercase text-sm tracking-widest hover:text-primary transition-colors">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="banner-curvo-azul">
+        <div class="max-w-5xl mx-auto px-4 text-center" data-aos="fade-right">
+            <h1 class="text-5xl md:text-7xl font-black mb-4 uppercase text-white tracking-tighter text-shadow-lg">Apoya nuestra causa</h1>
+            <div class="flex items-center justify-center space-x-2 text-sm font-black uppercase text-white/90 tracking-widest">
+                <a href="index.html" class="hover:text-secondary transition-colors">Inicio</a> 
+                <span class="text-secondary">/</span> 
+                <span>Donar</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Donaciones -->
+    <main class="py-24 bg-white">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-right">
+                <h2 class="text-5xl font-black text-primary uppercase tracking-tighter flex items-center justify-center gap-4">
+                    FORMAS DE APOYAR <i class="ph-fill ph-heart text-secondary"></i>
+                </h2>
+                <div class="w-24 h-1.5 bg-secondary mx-auto mt-4"></div>
+                <p class="mt-8 text-gray-500 font-bold max-w-2xl mx-auto">Tu generosidad nos permite seguir construyendo sueños y brindando oportunidades a quienes más lo necesitan en nuestra comunidad.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Donación Única -->
+                <div class="donation-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="icon-box">
+                        <i class="ph ph-hand-coins text-7xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-primary mb-6 uppercase tracking-tight">Donación única</h3>
+                    <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                        Contribuye con una donación puntual que se invertirá directamente en nuestros programas de alimentación, educación y mejoramiento de espacios comunitarios.
+                    </p>
+                </div>
+
+                <!-- Donación Recurrente -->
+                <div class="donation-card" data-aos="fade-right" data-aos-delay="300">
+                    <div class="icon-box">
+                        <i class="ph ph-hand-heart text-7xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-primary mb-6 uppercase tracking-tight">Donación recurrente</h3>
+                    <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                        Hazte socio de nuestra causa. Tu aporte mensual garantiza la sostenibilidad de nuestros proyectos sociales y ambientales a largo plazo.
+                    </p>
+                </div>
+
+                <!-- Donación Corporativa -->
+                <div class="donation-card" data-aos="fade-right" data-aos-delay="500">
+                    <div class="icon-box">
+                        <i class="ph ph-buildings text-7xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-primary mb-6 uppercase tracking-tight">Alianzas</h3>
+                    <p class="text-gray-500 font-bold text-sm leading-relaxed">
+                        Las empresas y organizaciones pueden transformar realidades. Fortalece tu impacto social apoyando nuestras iniciativas locales y ambientales.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Informativo Corto -->
+            <div class="mt-24 text-center" data-aos="fade-right" data-aos-delay="600">
+                <p class="text-gray-400 font-bold text-sm">Para más información sobre cómo colaborar, contáctanos en:</p>
+                <a href="mailto:gezacrecer@gmail.com" class="text-primary font-black hover:text-secondary transition-colors underline inline-flex items-center gap-2 mt-4 text-lg">
+                    <i class="ph ph-envelope"></i> gezacrecer@gmail.com
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-20">
+        <div class="max-w-[1250px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 items-start border-b border-white/10 pb-16 mb-10">
+            
+            <!-- Logo Col -->
+            <div class="flex flex-col items-center md:items-start" data-aos="fade-right">
+                <div class="bg-white p-2 rounded-2xl mb-6 shadow-xl">
+                    <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/v1740176880/Logo_Fundaci%C3%B3n_1_yi7vhx.png" alt="Logo Geza" class="h-24">
+                </div>
+                <p class="text-xs font-bold text-gray-400 max-w-[200px] text-center md:text-left">
+                    Llevando bienestar e inclusión a cada rincón de nuestra región.
+                </p>
+            </div>
+
+            <!-- Navegación -->
+            <div data-aos="fade-right" data-aos-delay="200">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">NAVEGACIÓN</h4>
+                <ul class="space-y-4 font-black text-sm uppercase tracking-widest">
+                    <li><a href="index.html" class="hover:text-secondary transition-colors">INICIO</a></li>
+                    <li><a href="servicios.html" class="hover:text-secondary transition-colors">SERVICIOS</a></li>
+                    <li><a href="donar.html" class="text-secondary">DONAR</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div data-aos="fade-right" data-aos-delay="400">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">CONTACTO</h4>
+                <div class="space-y-6 font-bold text-sm">
+                    <p class="flex items-center gap-4">
+                        <i class="ph-fill ph-phone text-primary text-xl"></i> +57 320 4694618
+                    </p>
+                    <p class="flex items-center gap-4">
+                        <i class="ph-fill ph-envelope-simple text-primary text-xl"></i> gezacrecer@gmail.com
+                    </p>
+                </div>
+            </div>
+
+            <!-- Redes -->
+            <div data-aos="fade-right" data-aos-delay="600">
+                <h4 class="text-secondary font-black text-lg uppercase tracking-[0.2em] mb-10">REDES</h4>
+                <div class="flex gap-6 text-2xl">
+                    <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-600">
+                &copy; 2024 FUNDACIÓN CRECER Y SERVIR GEZA.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Inicialización de AOS -->
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-back'
+        });
+    </script>
+
+</body>
+</html>
