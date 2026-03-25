@@ -111,6 +111,15 @@
             inset: 0;
             background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
         }
+
+        /* Lógica Menú Móvil Lateral */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -141,11 +150,28 @@
                 <a href="#" class="hover:text-primary transition-colors uppercase">Contacto</a>
             </nav>
 
-            <button class="md:hidden text-3xl text-primary">
+            <!-- Botón Hamburguesa Funcional -->
+            <button id="btn-open-menu" class="md:hidden text-3xl text-primary">
                 <i class="ph ph-list"></i>
             </button>
         </div>
     </header>
+
+    <!-- Overlay y Menú Lateral Móvil -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white z-[70] shadow-2xl p-6 flex flex-col">
+        <div class="flex justify-between items-center mb-10">
+            <img src="Logo Fundación 1.png" class="h-12">
+            <button id="btn-close-menu" class="text-3xl text-primary"><i class="ph ph-x"></i></button>
+        </div>
+        <nav class="flex flex-col gap-6 font-black uppercase text-lg">
+            <a href="index.html" class="text-primary">Inicio</a>
+            <a href="Quinessomos.html">Quiénes Somos</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="donar.html">Donar</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </div>
 
     <!-- Hero Slider Section -->
     <section class="slider-container">
@@ -306,6 +332,7 @@
             offset: 50
         });
 
+        // Lógica del Slider
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
         const prevBtn = document.getElementById('prevSlide');
@@ -357,6 +384,27 @@
         });
 
         startAutoSlide();
+
+        // Lógica del Menú Móvil
+        const btnOpen = document.getElementById('btn-open-menu');
+        const btnClose = document.getElementById('btn-close-menu');
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+
+        btnOpen.addEventListener('click', () => {
+            menu.classList.add('active');
+            overlay.classList.remove('hidden');
+        });
+
+        btnClose.addEventListener('click', () => {
+            menu.classList.remove('active');
+            overlay.classList.add('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            menu.classList.remove('active');
+            overlay.classList.add('hidden');
+        });
     </script>
 
 </body>
