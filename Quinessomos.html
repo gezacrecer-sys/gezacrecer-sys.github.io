@@ -50,79 +50,74 @@
             clip-path: ellipse(150% 100% at 50% 0%);
         }
 
-
-        .dropdown:hover .dropdown-menu {
+        .nav-item-dropdown {
+            position: relative;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu {
             display: block;
         }
 
-        .dropdown-item {
-            padding: 14px 24px;
-            display: block;
-            color: #1e3a8a;
-            font-weight: 800;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: #f8fafc;
-            color: #3b82f6;
-        }
-
-        .logo-img {
-            height: 75px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* Cards Estilo Imagen */
-        .card-shadow {
-            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .card-shadow:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Redes flotantes */
-        .social-sidebar {
-            position: fixed;
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
             left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-top: 4px solid #1e3a8a;
+            border-radius: 0 0 8px 8px;
             z-index: 100;
         }
-        .social-btn {
-            width: 50px;
-            height: 50px;
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 20px;
+            font-weight: 800;
+            color: #111827;
+            transition: all 0.2s;
+        }
+
+        .dropdown-link:hover {
+            background-color: #f0f7ff;
+            color: #1e3a8a;
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
-            border-radius: 0 8px 8px 0;
-        }
-        .social-btn:hover { width: 60px; }
-
-        /* Estilos Menú Móvil */
-        #mobile-menu {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-link-mobile {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: #1a3673;
-            text-transform: uppercase;
-            padding: 1rem 0;
-            display: block;
-            border-bottom: 1px solid #f1f5f9;
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
         }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
         /* Lógica Menú Móvil Lateral */
         #mobile-menu {
             transform: translateX(100%);
@@ -198,7 +193,6 @@
             </button>
         </div>
     </header>
-
     <!-- Overlay y Menú Lateral Móvil -->
     <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white z-[70] shadow-2xl p-6 flex flex-col">
@@ -416,16 +410,13 @@
         </div>
     </footer>
 
-    <!-- Lógica del Menú Móvil -->
+    <!-- Inicialización de AOS -->
     <script>
         AOS.init({
             duration: 800,
             once: true,
-            offset: 50
+            easing: 'ease-out-quad'
         });
-
-        // Lógica del Slider
-
         // Lógica del Menú Móvil
         const btnOpen = document.getElementById('btn-open-menu');
         const btnClose = document.getElementById('btn-close-menu');
@@ -445,7 +436,7 @@
         overlay.addEventListener('click', () => {
             menu.classList.remove('active');
             overlay.classList.add('hidden');
-        });
+        });        
     </script>
 
 </body>
