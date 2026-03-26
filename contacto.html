@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Fundación Geza</title>
+    <link rel="icon" href="Logo Fundación 1.png" type="image/icon">
+    <!-- Google Fonts: Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', 
+                        secondary: '#ecd20d',
+                        darkBlue: '#1a3673',
+                        facebook: '#1877F2',
+                        instagram: '#E4405F',
+                        tiktok: '#000000',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { font-family: 'Nunito', sans-serif !important; }
+
+        .banner-curvo-azul {
+            background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+            position: relative;
+            padding: 70px 0;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+       .header-border {
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .nav-item-dropdown {
+            position: relative;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-top: 4px solid #1e3a8a;
+            border-radius: 0 0 8px 8px;
+            z-index: 100;
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 20px;
+            font-weight: 800;
+            color: #111827;
+            transition: all 0.2s;
+        }
+
+        .dropdown-link:hover {
+            background-color: #f0f7ff;
+            color: #1e3a8a;
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        /* Lógica Menú Móvil Lateral */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+        /* Redes flotantes */
+        .social-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            border-radius: 0 8px 8px 0;
+        }
+        .social-btn:hover {
+            width: 60px;
+        }       
+    </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-50 header-border">
+        <div class="max-w-[1400px] mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="Logo Fundación 1.png" alt="Logo Fundación Geza" class="h-14 md:h-16">
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-10 font-extrabold text-[15px] tracking-tight text-gray-900">
+                <!-- INICIO en AZUL (Primary) -->
+                <a href="index.html" class="flex items-center gap-1 hover:text-primary uppercase group">Inicio</a>
+                
+                <div class="nav-item-dropdown py-6">
+                    <button class="flex items-center gap-1 hover:text-primary uppercase group">
+                        Quienes Somos 
+                        <i class="ph ph-caret-down text-[12px] transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="Quinessomos.html" class="dropdown-link border-b border-gray-50">Quienes somos</a>
+                        <a href="servicios.html" class="dropdown-link">Servicios</a>
+                    </div>
+                </div>
+
+                <a href="donar.html" class="hover:text-primary transition-colors uppercase">Donar</a>
+                <a href="contacto.html" class="text-primary hover:text-blue-700 transition-colors uppercase border-b-2 border-primary pb-1">Contacto</a>
+            </nav>
+
+            <!-- Botón Hamburguesa Funcional -->
+            <button id="btn-open-menu" class="md:hidden text-3xl text-primary">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Redes Flotantes -->
+    <div class="social-sidebar">
+        <a href="https://www.facebook.com/share/1CnvL82Rui/" target="_blank" class="social-btn bg-facebook"><i class="ph-fill ph-facebook-logo text-2xl"></i></a>
+        <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="social-btn bg-instagram"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
+        <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="social-btn bg-tiktok"><i class="ph-fill ph-tiktok-logo text-2xl"></i></a>
+    </div>
+
+    <!-- Overlay y Menú Lateral Móvil -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white z-[70] shadow-2xl p-6 flex flex-col">
+        <div class="flex justify-between items-center mb-10">
+            <img src="Logo Fundación 1.png" class="h-12">
+            <button id="btn-close-menu" class="text-3xl text-primary"><i class="ph ph-x"></i></button>
+        </div>
+        <nav class="flex flex-col gap-6 font-black uppercase text-lg">
+            <a href="index.html" >Inicio</a>
+            <a href="Quinessomos.html">Quiénes Somos</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="donar.html">Donar</a>
+            <a href="contacto.html"  class="text-primary">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Banner -->
+    <section class="banner-curvo-azul">
+        <div class="max-w-5xl mx-auto px-4 text-center" data-aos="fade-down">
+            <h1 class="text-4xl md:text-6xl font-black mb-3 uppercase text-white tracking-tight">Contacto</h1>
+            <div class="flex items-center justify-center space-x-2 text-[12px] font-black uppercase text-white/90 tracking-widest">
+                <a href="index.html" class="hover:text-secondary transition-colors">Inicio</a> 
+                <span class="text-secondary">/</span> 
+                <span>Contacto</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido de Contacto -->
+    <main class="py-20 bg-white">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                
+                <!-- Info de Contacto -->
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-black text-primary uppercase tracking-tight mb-4">¡Hablemos!</h2>
+                    <div class="w-16 h-1 bg-secondary mb-8"></div>
+                    <p class="text-[15px] font-bold text-gray-500 mb-12 leading-relaxed max-w-md">
+                        ¿Tienes dudas sobre nuestros programas o quieres colaborar con nuestra causa? Estamos aquí para escucharte y trabajar juntos por nuestra comunidad.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary text-2xl shrink-0">
+                                <i class="ph-bold ph-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-primary uppercase text-xs tracking-widest mb-1">Teléfono</h4>
+                                <p class="font-bold text-gray-600">+57 320 4694618</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary text-2xl shrink-0">
+                                <i class="ph-bold ph-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-primary uppercase text-xs tracking-widest mb-1">Email</h4>
+                                <p class="font-bold text-gray-600">gezacrecer@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary text-2xl shrink-0">
+                                <i class="ph-bold ph-map-pin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-primary uppercase text-xs tracking-widest mb-1">Ubicación</h4>
+                                <p class="font-bold text-gray-600">Norte de Santander, Colombia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="bg-gray-50 p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-gray-100" data-aos="fade-left">
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[11px] font-black uppercase text-gray-400 tracking-widest mb-2 ml-1">Nombre</label>
+                                <input type="text" placeholder="Ej: Juan Pérez" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-black uppercase text-gray-400 tracking-widest mb-2 ml-1">Email</label>
+                                <input type="email" placeholder="juan@ejemplo.com" class="form-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-black uppercase text-gray-400 tracking-widest mb-2 ml-1">Asunto</label>
+                            <input type="text" placeholder="¿En qué podemos ayudarte?" class="form-input">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-black uppercase text-gray-400 tracking-widest mb-2 ml-1">Mensaje</label>
+                            <textarea rows="5" placeholder="Escribe tu mensaje aquí..." class="form-input resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white font-black uppercase text-sm tracking-widest py-5 rounded-xl hover:bg-darkBlue hover:-translate-y-1 transition-all shadow-lg shadow-primary/20">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white pt-20 pb-10">
+        <div class="max-w-[1300px] mx-auto px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+                <div class="flex flex-col items-center lg:items-start" data-aos="fade-right">
+                    <div class="footer-logo-container mb-6">
+                        <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/v1740176880/Logo_Fundaci%C3%B3n_1_yi7vhx.png" alt="Logo" class="h-24">
+                    </div>
+                    <p class="text-lg font-bold text-white max-w-sm text-center lg:text-left leading-snug">
+                        Llevando bienestar e inclusión a cada rincón de nuestra región.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10" data-aos="fade-left">
+                    <div>
+                        <h4 class="text-secondary font-black text-xl uppercase tracking-[0.1em] mb-8 italic">NAVEGACIÓN</h4>
+                        <ul class="space-y-6 font-black text-[17px] uppercase tracking-wider">
+                            <li><a href="index.html" class="hover:text-secondary transition-colors">INICIO</a></li>
+                            <li><a href="Quinessomos.html" class="hover:text-secondary transition-colors">QUIENES SOMOS</a></li>
+                            <li><a href="servicios.html" class="hover:text-secondary transition-colors">SERVICIOS</a></li>
+                            <li><a href="donar.html" class="hover:text-secondary transition-colors">DONAR</a></li>
+                            <li><a href="contacto.html" class="text-secondary">CONTACTO</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-secondary font-black text-xl uppercase tracking-[0.1em] mb-8 italic">REDES</h4>
+                        <div class="flex gap-6 text-3xl">
+                            <a href="https://www.facebook.com/share/1CnvL82Rui/" class="hover:text-primary transition-colors"><i class="ph ph-facebook-logo"></i></a>
+                            <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-instagram-logo"></i></a>
+                            <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-[9px] font-black uppercase tracking-[0.5em] text-gray-600">&copy; 2024 FUNDACIÓN CRECER Y SERVIR GEZA.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inicialización de AOS -->
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-back'
+        });
+        // Lógica del Menú Móvil
+        const btnOpen = document.getElementById('btn-open-menu');
+        const btnClose = document.getElementById('btn-close-menu');
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+
+        btnOpen.addEventListener('click', () => {
+            menu.classList.add('active');
+            overlay.classList.remove('hidden');
+        });
+
+        btnClose.addEventListener('click', () => {
+            menu.classList.remove('active');
+            overlay.classList.add('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            menu.classList.remove('active');
+            overlay.classList.add('hidden');
+        });        
+    </script>
+</body>
+</html>
