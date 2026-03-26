@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundación Geza - Crecer y Servir</title>
-    
+
+    <!-- Google Fonts: Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">   
+
     <!-- Fonts: Nunito & Dancing Script -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,14 +27,15 @@
                 extend: {
                     colors: {
                         primary: '#1e3a8a', 
-                        secondary: '#ecd20d', // Amarillo corporativo
-                        accent: '#cf3135',
-                        dark: '#111827',
-                        navy: '#1a3673',
+                        secondary: '#ecd20d',
+                        darkBlue: '#1a3673',
+                        textGray: '#4b5563',
+                        facebook: '#1877F2',
+                        instagram: '#E4405F',
+                        tiktok: '#000000',
                     },
                     fontFamily: {
                         sans: ['Nunito', 'sans-serif'],
-                        cursive: ['Dancing Script', 'cursive'],
                     }
                 }
             }
@@ -120,9 +126,40 @@
         #mobile-menu.active {
             transform: translateX(0);
         }
+        /* Redes flotantes */
+        .social-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            border-radius: 0 8px 8px 0;
+        }
+        .social-btn:hover {
+            width: 60px;
+        }        
     </style>
 </head>
 <body class="bg-white text-gray-800">
+
+    <!-- Redes Flotantes -->
+    <div class="social-sidebar">
+        <a href="https://www.facebook.com/share/1CnvL82Rui/" class="social-btn bg-facebook"><i class="ph-fill ph-facebook-logo text-2xl"></i></a>
+        <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="social-btn bg-instagram"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
+        <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="social-btn bg-tiktok"><i class="ph-fill ph-tiktok-logo text-2xl"></i></a>
+    </div>
 
     <!-- Header -->
     <header class="bg-white sticky top-0 z-50 header-border">
@@ -147,7 +184,7 @@
                 </div>
 
                 <a href="donar.html" class="hover:text-primary transition-colors uppercase">Donar</a>
-                <a href="#" class="hover:text-primary transition-colors uppercase">Contacto</a>
+                <a href="contacto.html" class="hover:text-primary transition-colors uppercase">Contacto</a>
             </nav>
 
             <!-- Botón Hamburguesa Funcional -->
@@ -169,7 +206,7 @@
             <a href="Quinessomos.html">Quiénes Somos</a>
             <a href="servicios.html">Servicios</a>
             <a href="donar.html">Donar</a>
-            <a href="#">Contacto</a>
+            <a href="contacto.html">Contacto</a>
         </nav>
     </div>
 
@@ -275,53 +312,41 @@
 
     <!-- Footer -->
     <footer class="bg-black text-white pt-20 pb-10">
-        <div class="max-w-[1300px] mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12 items-start">
-            <div class="flex flex-col items-start">
-                <div class="bg-white p-2 rounded-2xl w-40 h-28 flex items-center justify-center mb-6 overflow-hidden">
-                    <img src="Logo Fundación 1.png" alt="Logo Geza" class="max-h-full object-contain">
-                </div>
-                <p class="text-gray-300 text-sm font-bold leading-tight max-w-[200px]">
-                    Llevando bienestar e inclusión a cada rincón de nuestra región.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="text-secondary font-black text-lg uppercase mb-8 tracking-[0.2em]">Navegación</h4>
-                <ul class="space-y-4 font-black text-sm uppercase tracking-widest">
-                    <li><a href="index.html" class="text-secondary hover:text-white transition-colors inline-block">Inicio</a></li>
-                    <li><a href="servicios.html" class="hover:text-secondary transition-colors inline-block">Servicios</a></li>
-                    <li><a href="donar.html" class="hover:text-secondary transition-colors inline-block">Donar</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-secondary font-black text-lg uppercase mb-8 tracking-[0.2em]">Contacto</h4>
-                <div class="space-y-6 font-black text-sm tracking-wider">
-                    <p class="flex items-center gap-3">
-                        <i class="ph ph-phone-fill text-primary text-xl"></i> 
-                        <span>+57 (320) 4694618</span>
-                    </p>
-                    <p class="flex items-center gap-3">
-                        <i class="ph ph-envelope-simple-fill text-primary text-xl"></i> 
-                        <span class="lowercase">gezacrecer@gmail.com</span>
+        <div class="max-w-[1300px] mx-auto px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+                <div class="flex flex-col items-center lg:items-start" data-aos="fade-right">
+                    <div class="footer-logo-container mb-6">
+                        <img src="https://res.cloudinary.com/dnoua3ysb/image/upload/v1740176880/Logo_Fundaci%C3%B3n_1_yi7vhx.png" alt="Logo" class="h-24">
+                    </div>
+                    <p class="text-lg font-bold text-white max-w-sm text-center lg:text-left leading-snug">
+                        Llevando bienestar e inclusión a cada rincón de nuestra región.
                     </p>
                 </div>
-            </div>
 
-            <div>
-                <h4 class="text-secondary font-black text-lg uppercase mb-8 tracking-[0.2em]">Redes</h4>
-                <div class="flex gap-6 text-2xl">
-                    <a href="#" class="hover:text-primary transition-colors"><i class="ph ph-facebook-logo"></i></a>
-                    <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-instagram-logo"></i></a>
-                    <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10" data-aos="fade-left">
+                    <div>
+                        <h4 class="text-secondary font-black text-xl uppercase tracking-[0.1em] mb-8 italic">NAVEGACIÓN</h4>
+                        <ul class="space-y-6 font-black text-[17px] uppercase tracking-wider">
+                            <li><a href="index.html" class="text-secondary">INICIO</a></li>
+                            <li><a href="Quinessomos.html" class="hover:text-secondary transition-colors">QUIENES SOMOS</a></li>
+                            <li><a href="servicios.html" class="hover:text-secondary transition-colors">SERVICIOS</a></li>
+                            <li><a href="donar.html" class="hover:text-secondary transition-colors">DONAR</a></li>
+                            <li><a href="contacto.html"class="hover:text-secondary transition-colors" >CONTACTO</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-secondary font-black text-xl uppercase tracking-[0.1em] mb-8 italic">REDES</h4>
+                        <div class="flex gap-6 text-3xl">
+                            <a href="https://www.facebook.com/share/1CnvL82Rui/" class="hover:text-primary transition-colors"><i class="ph ph-facebook-logo"></i></a>
+                            <a href="https://www.instagram.com/fundaciongezacrecer/" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-instagram-logo"></i></a>
+                            <a href="https://www.tiktok.com/@crecergeza" target="_blank" class="hover:text-primary transition-colors"><i class="ph ph-tiktok-logo"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="mt-20 pt-8 border-t border-gray-900 text-center">
-            <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-600">
-                &copy; 2024 FUNDACIÓN CRECER Y SERVIR GEZA.
-            </p>
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-[9px] font-black uppercase tracking-[0.5em] text-gray-600">&copy; 2024 FUNDACIÓN CRECER Y SERVIR GEZA.</p>
+            </div>
         </div>
     </footer>
 
